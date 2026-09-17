@@ -1,8 +1,7 @@
 # Systémová analýza – Smart Locker
 
 **Názov projektu:** Smart Locker – systém rezervácie školských skriniek
-**Meno riešiteľa:** [Tvoje meno]
-**Login:** [Tvoj login]
+**Meno riešiteľa:** Matúš Turiak
 
 ---
 
@@ -392,91 +391,6 @@ classDiagram
     Locker "1" --> "0..1" Reservation : patrí
     User "1" --> "0..*" ProblemReport : nahlasuje
     Locker "1" --> "0..*" ProblemReport : obsahuje
-```
-
----
-
-## Aktivitný diagram – bonus
-
-Diagram znázorňuje rozhodovanie systému pri rezervácii skrinky.
-
-```mermaid
-flowchart TD
-
-    A([Začiatok]) --> B[Študent otvorí zoznam skriniek]
-    B --> C[Vyberie skrinku]
-    C --> D{Je skrinka voľná?}
-
-    D -- Nie --> E[Zobraziť upozornenie]
-    E --> B
-
-    D -- Áno --> F{Má študent inú rezerváciu?}
-
-    F -- Áno --> G[Zobraziť informáciu o existujúcej rezervácii]
-    G --> H([Koniec])
-
-    F -- Nie --> I[Vytvoriť rezerváciu]
-    I --> J[Označiť skrinku ako obsadenú]
-    J --> K[Zobraziť potvrdenie]
-    K --> H
-```
-
----
-
-## Wireframe kľúčových obrazoviek – bonus
-
-### 1. Prihlásenie
-
-```text
-+--------------------------------------+
-|             SMART LOCKER             |
-+--------------------------------------+
-|                                      |
-|  Používateľské meno: [____________]  |
-|                                      |
-|  Heslo:              [____________]  |
-|                                      |
-|             [ PRIHLÁSIŤ ]            |
-|                                      |
-+--------------------------------------+
-```
-
-### 2. Zoznam skriniek
-
-```text
-+------------------------------------------------+
-| SMART LOCKER                     Môj profil    |
-+------------------------------------------------+
-|                                                |
-| Dostupné skrinky                               |
-|                                                |
-| Skrinka 01     VOĽNÁ        [Rezervovať]       |
-| Skrinka 02     OBSADENÁ                         |
-| Skrinka 03     VOĽNÁ        [Rezervovať]       |
-| Skrinka 04     POŠKODENÁ                        |
-| Skrinka 05     VOĽNÁ        [Rezervovať]       |
-|                                                |
-+------------------------------------------------+
-```
-
-### 3. Moja rezervácia
-
-```text
-+-------------------------------------------+
-| SMART LOCKER                              |
-+-------------------------------------------+
-|                                           |
-| Moja rezervácia                           |
-|                                           |
-| Číslo skrinky: 03                         |
-| Umiestnenie: 2. poschodie                 |
-| Stav: Aktívna                             |
-|                                           |
-| [Zrušiť rezerváciu]                       |
-| [Nahlásiť problém]                        |
-|                                           |
-+-------------------------------------------+
-```
 
 ---
 
