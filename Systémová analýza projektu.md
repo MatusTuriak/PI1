@@ -229,33 +229,7 @@ Hlavné prípady použitia systému:
 * Nahlásenie poruchy
 * Správa skriniek
 
-```mermaid
-flowchart LR
-    Student[Študent]
-    Admin[Administrátor]
-
-    Login((Prihlásenie))
-    View((Zobrazenie skriniek))
-    Reserve((Rezervácia skrinky))
-    Cancel((Zrušenie rezervácie))
-    Report((Nahlásenie poruchy))
-    Manage((Správa skriniek))
-
-    Student --- Login
-    Student --- View
-    Student --- Reserve
-    Student --- Cancel
-    Student --- Report
-
-    Admin --- Login
-    Admin --- View
-    Admin --- Manage
-
-    Reserve -. include .-> View
-    Cancel -. include .-> Login
-    Manage -. include .-> Login
-```
-
+![Use Case diagram](use_case_diagram.png)
 ---
 
 ## Scenáre – konkrétna implementácia Use Case
@@ -323,74 +297,13 @@ Používateľ vyberie voľnú skrinku, systém úspešne vytvorí rezerváciu a 
 
 Sekvenčný diagram znázorňuje proces rezervácie skrinky.
 
-```mermaid
-sequenceDiagram
-    actor Student as Študent
-    participant App as Aplikácia
-    participant DB as Databáza
-
-    Student->>App: Otvorí zoznam skriniek
-    App->>DB: Vyžiada dostupné skrinky
-    DB-->>App: Zoznam dostupných skriniek
-    App-->>Student: Zobrazí skrinky
-
-    Student->>App: Vyberie skrinku
-    Student->>App: Klikne Rezervovať
-    App->>DB: Overí dostupnosť skrinky
-    DB-->>App: Skrinka je dostupná
-
-    App->>DB: Vytvorí rezerváciu
-    App->>DB: Zmení stav skrinky na obsadená
-    DB-->>App: Rezervácia uložená
-    App-->>Student: Potvrdenie rezervácie
-```
+![Sekvenčný diagram](sekvencny_diagram.png)
 
 ---
 
 ## Triedny diagram
 
-```mermaid
-classDiagram
-
-    class User {
-        +int id
-        +string name
-        +string username
-        +string password
-        +string role
-        +login()
-        +viewLockers()
-    }
-
-    class Locker {
-        +int id
-        +int number
-        +string location
-        +string status
-        +isAvailable()
-        +changeStatus()
-    }
-
-    class Reservation {
-        +int id
-        +date reservationDate
-        +string status
-        +createReservation()
-        +cancelReservation()
-    }
-
-    class ProblemReport {
-        +int id
-        +string description
-        +date reportDate
-        +string status
-        +createReport()
-    }
-
-    User "1" --> "0..1" Reservation : vytvára
-    Locker "1" --> "0..1" Reservation : patrí
-    User "1" --> "0..*" ProblemReport : nahlasuje
-    Locker "1" --> "0..*" ProblemReport : obsahuje
+![Triedny diagram](triedny_diagram.png)
 
 ---
 
