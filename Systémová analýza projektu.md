@@ -297,7 +297,7 @@ Používateľ vyberie voľnú skrinku, systém úspešne vytvorí rezerváciu a 
 
 Sekvenčný diagram znázorňuje proces rezervácie skrinky.
 
-![Sekvenčný diagram](sekvencny_diagram.png)
+![Sekvenčný diagram](sekvenčný_diagram.png)
 
 ---
 
